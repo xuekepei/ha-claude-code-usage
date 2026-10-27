@@ -129,7 +129,13 @@ async def async_push(hass: HomeAssistant, runtime: Runtime, payload: dict[str, A
     devices = runtime.data.setdefault("devices", {})
     retired = runtime.data.setdefault("retired", [])
     data_version = DATA_VERSION if payload["full"] else devices.get(device, {}).get("data_version")
-    devices[device] = {"name": name, "data_version": data_version}
+    devices[device] = {
+        "name": name,
+        "data_version": data_version,
+        # 在诊断信息里看各电脑还在不在推、脚本是哪个版本
+        "last_push": dt_util.utcnow().isoformat(),
+        "client_version": payload.get("version"),
+    }
     if device in retired:
         retired.remove(device)
     result: dict[str, Any] = {"imported": len(rows), "full_needed": data_version != DATA_VERSION}
@@ -137,6 +143,7 @@ async def async_push(hass: HomeAssistant, runtime: Runtime, payload: dict[str, A
     old = payload.get("replaces")
     if old and old != device and old not in retired:
         retired.append(old)
+        devices.pop(old, None)
         if await _async_clear_if_covered(hass, old, rows[-1][1]):
             result["cleared"] = old
         else:
