@@ -1,0 +1,23 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Claude Code 用量",
+        "description": "创建一个 webhook，各电脑上的推送脚本每小时把 Claude Code 的 token 用量发到这里。"
+      },
+      "reconfigure": {
+        "title": "Webhook 地址",
+        "description": "当前的 webhook 地址：\n\n`{webhook_url}`\n\n如果上面只有 `/api/webhook/...` 这段路径，前面补上从外面访问 HA 的地址（如 `https://ha.example.com`）。在「设置 → 系统 → 网络」里填好外部地址后，这里会显示完整地址。\n\n地址泄漏了就重新生成。之后每台电脑都要用新地址重新运行一次 `install --webhook`。",
+        "data": {
+          "regenerate": "重新生成 webhook 地址"
+        }
+      }
+    },
+    "create_entry": {
+      "default": "把这个 webhook 地址交给各电脑上的推送脚本（`install --webhook <地址>`）：\n\n`{webhook_url}`\n\n如果上面只有 `/api/webhook/...` 这段路径，前面补上从外面访问 HA 的地址（如 `https://ha.example.com`）。在「设置 → 系统 → 网络」里填好外部地址后，这里会显示完整地址。\n\n以后可以在「重新配置」里再看到它。"
+    },
+    "abort": {
+      "reconfigure_successful": "Webhook 地址：\n\n`{webhook_url}`\n\n如果上面只有 `/api/webhook/...` 这段路径，前面补上从外面访问 HA 的地址（如 `https://ha.example.com`）。在「设置 → 系统 → 网络」里填好外部地址后，这里会显示完整地址。"
+    }
+  }
+}

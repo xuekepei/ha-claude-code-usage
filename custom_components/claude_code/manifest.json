@@ -1,0 +1,13 @@
+{
+  "domain": "claude_code",
+  "name": "Claude Code Usage",
+  "codeowners": ["@xuekepei"],
+  "config_flow": true,
+  "dependencies": ["lovelace", "recorder", "webhook"],
+  "documentation": "https://github.com/xuekepei/ha-claude-code-usage",
+  "integration_type": "service",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/xuekepei/ha-claude-code-usage/issues",
+  "single_config_entry": true,
+  "version": "1.0.0"
+}

@@ -1,0 +1,23 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Claude Code Usage",
+        "description": "Creates a webhook that the push script on each computer sends its hourly Claude Code token usage to."
+      },
+      "reconfigure": {
+        "title": "Webhook URL",
+        "description": "Current webhook URL:\n\n`{webhook_url}`\n\nIf only the `/api/webhook/...` path is shown, prefix it with the address you use to reach Home Assistant from outside (e.g. `https://ha.example.com`). Set an external URL under Settings → System → Network to see the full URL here.\n\nIf it has leaked, regenerate it. Every computer then has to run `install --webhook` again with the new URL.",
+        "data": {
+          "regenerate": "Regenerate the webhook URL"
+        }
+      }
+    },
+    "create_entry": {
+      "default": "Give this webhook URL to the push script on each computer (`install --webhook <URL>`):\n\n`{webhook_url}`\n\nIf only the `/api/webhook/...` path is shown, prefix it with the address you use to reach Home Assistant from outside (e.g. `https://ha.example.com`). Set an external URL under Settings → System → Network to see the full URL here.\n\nYou can view it again later under Reconfigure."
+    },
+    "abort": {
+      "reconfigure_successful": "Webhook URL:\n\n`{webhook_url}`\n\nIf only the `/api/webhook/...` path is shown, prefix it with the address you use to reach Home Assistant from outside (e.g. `https://ha.example.com`). Set an external URL under Settings → System → Network to see the full URL here."
+    }
+  }
+}
